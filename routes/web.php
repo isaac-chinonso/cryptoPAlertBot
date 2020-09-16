@@ -15,10 +15,4 @@ Route::get('get-me', 'TelegramController@getMe');
 
 Route::get('set-hook', 'TelegramController@setWebHook');
 
-public function setWebHook()
-{
-    $url = 'https://applicationdomain.com/' . env('TELEGRAM_BOT_TOKEN') . '/webhook';
-    $response = $this->telegram->setWebhook(['url' => $url]);
- 
-    return $response == true ? redirect()->back() : dd($response);
-}
+Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', 'TelegramController@handleRequest');

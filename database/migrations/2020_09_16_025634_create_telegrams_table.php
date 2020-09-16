@@ -14,7 +14,9 @@ class CreateTelegramsTable extends Migration
     public function up()
     {
         Schema::create('telegrams', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('username');
+            $table->string('command');
             $table->timestamps();
         });
     }
